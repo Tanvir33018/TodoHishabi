@@ -81,7 +81,7 @@ class MainFragment : Fragment()  {
         val button = dialog.findViewById(R.id.button) as Button
 
         button.setOnClickListener(View.OnClickListener {
-            val todoTask = TodoModel(0,title.text.toString(),body.text.toString())
+            val todoTask = TodoModel(0,title.text.toString(),body.text.toString(),0)
             viewModel.addTask(todoTask)
             dialog.dismiss()
         })

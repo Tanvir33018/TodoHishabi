@@ -8,5 +8,6 @@ data class TodoModel(
     @PrimaryKey(autoGenerate = true)
     val mId:Int,
     val mTitle:String,
-    val mDescription:String
+    val mDescription:String,
+    var mActive:Int
     )

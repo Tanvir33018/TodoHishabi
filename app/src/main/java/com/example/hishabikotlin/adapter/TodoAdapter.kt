@@ -41,6 +41,18 @@ class TodoAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.mTitle.setText(mList.get(position).mTitle)
+
+        if(mList.get(position).mActive == 1){
+            holder.mButton.isChecked=true
+            holder.mButton.setBackgroundTintList(
+                mContext.getResources().getColorStateList(R.color.teal_200)
+            )
+            holder.mTitle.paintFlags = holder.mTitle.paintFlags or Paint.STRIKE_THRU_TEXT_FLAG
+            holder.mTitle.setTextColor(
+                mContext.getResources().getColorStateList(R.color.custom3)
+            )
+        }
+
         holder.mButton.setOnClickListener(View.OnClickListener {
             if (holder.mButton.isChecked) {
                 holder.mButton.setBackgroundTintList(
@@ -50,8 +62,8 @@ class TodoAdapter(
                 holder.mTitle.setTextColor(
                     mContext.getResources().getColorStateList(R.color.custom3)
                 )
-                /*mList.get(position).mFlag = true
-                function2(mList.get(position))*/
+                mList.get(position).mActive = 1
+                function2(mList.get(position))
             } else {
                 holder.mButton.setBackgroundTintList(
                     mContext.getResources().getColorStateList(R.color.custom)
@@ -59,8 +71,8 @@ class TodoAdapter(
                 holder.mTitle.paintFlags =
                     holder.mTitle.paintFlags and Paint.STRIKE_THRU_TEXT_FLAG.inv()
                 holder.mTitle.setTextColor(mContext.getResources().getColorStateList(R.color.black))
-                /*mList.get(position).mFlag = false
-                function2(mList.get(position))*/
+                mList.get(position).mActive = 0
+                function2(mList.get(position))
             }
 
         })
@@ -74,3 +86,5 @@ class TodoAdapter(
         return mList.size
     }
 }
+
+
