@@ -6,9 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 @Database(entities = [TodoModel::class],version = 1,exportSchema = false)
 abstract class TodoDatabase:RoomDatabase() {
-
     abstract fun todoDao():TodoDao
-
     companion object{
         @Volatile
         var INSTACE:TodoDatabase?=null
@@ -23,7 +21,6 @@ abstract class TodoDatabase:RoomDatabase() {
                 INSTACE = mDatabaseInstance
                 return mDatabaseInstance
             }
-
           }
     }
 }
